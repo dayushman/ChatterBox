@@ -1,8 +1,8 @@
 package com.example.chatterbox.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.chatterbox.databinding.ActivitySignInBinding
 
 class SignInActivity : AppCompatActivity() {
@@ -22,4 +22,6 @@ class SignInActivity : AppCompatActivity() {
             startActivity(Intent(this,SignUpActivity::class.java))
         }
     }
+
+
 }

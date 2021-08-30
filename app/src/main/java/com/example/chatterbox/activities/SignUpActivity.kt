@@ -1,9 +1,8 @@
 package com.example.chatterbox.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.chatterbox.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.chatterbox.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {
