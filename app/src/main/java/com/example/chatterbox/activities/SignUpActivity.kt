@@ -19,7 +19,6 @@ import com.example.chatterbox.utilities.PreferenceManager
 import com.google.firebase.firestore.FirebaseFirestore
 import java.io.ByteArrayOutputStream
 import java.io.FileNotFoundException
-import java.io.InputStream
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -29,10 +28,10 @@ class SignUpActivity : AppCompatActivity() {
     private var encodedImage : String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        preferenceManager = PreferenceManager(applicationContext)
 
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        preferenceManager = PreferenceManager(applicationContext)
         setListeners()
     }
 
@@ -111,7 +110,7 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
 
-    val pickImage = registerForActivityResult(
+    private val pickImage = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult(),
         activityResultCallback
     )
