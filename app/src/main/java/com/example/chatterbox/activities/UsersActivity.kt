@@ -41,13 +41,15 @@ class UsersActivity : AppCompatActivity() {
                 if (task.isSuccessful && task.result != null){
                     val users = ArrayList<User>()
                     task.result!!.forEach { queryDocumentSnapshot ->
-                        val user = User(
-                            queryDocumentSnapshot.getString(Constants.KEY_NAME).toString(),
-                            queryDocumentSnapshot.getString(Constants.KEY_IMAGE).toString(),
-                            queryDocumentSnapshot.getString(Constants.KEY_EMAIL).toString(),
-                            queryDocumentSnapshot.getString(Constants.KEY_FCM_TOKEN).toString(),
-                        )
-                        users.add(user)
+                        if (!queryDocumentSnapshot.getString(Constants.KEY_USER_ID).equals(currentUserId)){
+                            val user = User(
+                                queryDocumentSnapshot.getString(Constants.KEY_NAME).toString(),
+                                queryDocumentSnapshot.getString(Constants.KEY_IMAGE).toString(),
+                                queryDocumentSnapshot.getString(Constants.KEY_EMAIL).toString(),
+                                queryDocumentSnapshot.getString(Constants.KEY_FCM_TOKEN).toString(),
+                            )
+                            users.add(user)
+                        }
                     }
                     if (users.isNotEmpty()){
                         val adaptor = UserAdapter(users)
