@@ -34,6 +34,9 @@ class MainActivity : AppCompatActivity() {
         binding.imageSignOut.setOnClickListener{
             signOut()
         }
+        binding.fabNewChat.setOnClickListener {
+            startActivity(Intent(this,UsersActivity::class.java))
+        }
     }
 
     private fun loadUserDetails(){
@@ -51,7 +54,6 @@ class MainActivity : AppCompatActivity() {
         val documentReference = database.collection(Constants.KEY_COLLECTION_USERS)
             .document(preferenceManager.getString(Constants.KEY_USER_ID)!!)
         documentReference.update(Constants.KEY_FCM_TOKEN,token)
-            .addOnSuccessListener { unused-> showToast("Token updated successfully!") }
             .addOnFailureListener { e-> showToast("Unable to update token") }
     }
 
